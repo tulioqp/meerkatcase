@@ -1,6 +1,6 @@
 import requests
 import streamlit as st
-import bs4
+from bs4 import BeautifulSoup
 
 
 # function to perform web scraping
@@ -12,7 +12,7 @@ def scrape():
     url = 'http://bianca.com'
     response = requests.get(url)
 
-    soup = bs4.BeautifulSoup(response.text, 'html.parser')
+    soup = BeautifulSoup(response.text, 'html.parser')
     content = soup.find('h1')
     if content:
         return content.text.strip()
